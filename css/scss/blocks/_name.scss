@@ -1,0 +1,19 @@
+/*******************
+	BLOCK NAME
+*******************/
+.block__name{
+	@include border(outside);
+
+	position: absolute;
+	cursor: pointer;
+
+//	width: 40%;
+//	height: 18%;
+//	left: 40px;
+//	top: 40px;
+
+	width: 250px;
+	height: 115px;
+
+	padding: 10px 18px;
+}

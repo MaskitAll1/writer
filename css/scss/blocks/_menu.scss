@@ -1,0 +1,85 @@
+/*******************
+	BLOCK MENU
+*******************/
+.block__menu{
+	@include border(outside);
+	z-index: 100;
+
+	position: absolute;
+//
+//	width: 40%;
+//	height: 65%;
+
+	width: 250px;
+	height: 425px;
+
+	top: 200px;
+//	left: 40px;
+
+	.menu__title{
+		text-align: start;
+		border-bottom: 1px solid #FFE8CC;
+		padding: 12px 20px 1px;
+	}
+
+	.menu__items{
+		@include colomn(30px);
+
+		margin-top: 5px;
+		cursor: pointer;
+
+		li{
+			display: block;
+			position: relative;
+			padding: 15px;
+		}
+
+		li::after{
+			content: '';
+
+			position: absolute;
+			width: 14px;
+			height: 14px;
+			top: 20px;
+			right: 30px;
+
+			border-radius: 50%;
+
+			background-color: $color__text-menu-checked;
+			transform: scale(0);
+			transition: .2s;
+		}
+
+		li:hover, li:hover a{
+			color: $color__text-menu-checked;
+		}
+
+		li:hover:after{
+			transform: scale(1);
+		}
+
+		.active{
+			color: $color__text-menu-checked;
+		}
+	}
+}
+
+//
+//@media screen and (max-width: 1250px){
+//	.block__menu{
+//		@include row;
+//
+//		position: absolute;
+//		width: 880px;
+//		height: auto;
+//		top: 0;
+//		left: 380px;
+//		margin-top: 30px;
+//
+//	.menu__items{
+//		@include row;
+//
+//
+//	}
+//	}
+//}

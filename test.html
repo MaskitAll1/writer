@@ -1,0 +1,71 @@
+<div class="white-over">
+	<div class="white-fon"></div>
+</div>
+<div class="left-fon"></div>
+<div class="bot-fon"></div>
+<div class="bot-content"></div>
+
+<style>
+	.white-over{
+		position: absolute;
+		overflow: hidden;
+
+		width: calc(40%);
+		height: calc(80%);
+		left: 20px;
+		top: 20px;
+
+	}
+	.white-fon{
+		position: absolute;
+		z-index: 10;
+
+		width: calc(100%);
+		height: calc(100%);
+		left: -40px;
+		top: -40px;
+
+		box-sizing: content-box;
+
+		background-color: white;
+		border: 20px solid red;
+		box-shadow: 0 0 10px #202020 inset;
+		border-radius: 40px;
+	}
+	.left-fon{
+		position: absolute;
+
+		width: 60%;
+		height: 80%;
+		left: 40%;
+		top: 0;
+
+		border-top-left-radius: 20px;
+		box-shadow: 0px 0px 10px #202020;
+		background-color: blue;
+	}
+	.bot-fon{
+		position: absolute;
+		z-index: -1;
+
+		width: 50%;
+		height: 20%;
+		left: 0;
+		top: 80%;
+
+		border-top-left-radius: 20px;
+		box-shadow: 0 0px 10px #202020;
+		background-color: green;
+	}
+	.bot-content{
+		position: absolute;
+		z-index: 10;
+
+		width: 60%;
+		height: 20%;
+		left: 40%;
+		top: 80%;
+
+		background-color: yellow;
+	}
+</style>

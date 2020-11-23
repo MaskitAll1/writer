@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<link rel="shortcut icon" href="/img/logo.jpg" type="image/png">
+	<title>Наталья Хаимова</title>
+
+	<!-- Подключение стилей	-->
+	<link rel="stylesheet" href="/css/reset.css">
+	<link rel="stylesheet" href="/css/main.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<!-- Подключение VUE.js-->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="main">
+
+
+
+
+
+
+
+
+<!--***********************
+	NAV BLOCK
+*************************-->
+<div id="nav-block" class = "white-over">
+	<div class="white-fon" :class="{'dark-border': isShowPage == 0, 'light-border': isShowPage != 0}">
+
+	<!--***********************
+		TITLE NAME
+	*************************-->
+		<div id="name" class="block__name"  v-on:click="isShowPage = 0" :class="[isShowPage === 0 ? '_menu' : '_light']">
+			<a href="#">
+				<span class="name__content">{{title}}</span>
+			</a>
+		</div>
+
+	<!--***********************
+		MENU
+	*************************-->
+		<div id="menu" class="block__menu _menu">
+			<h2 class="menu__title">Меню</h2>
+
+			<ul class="menu__items">
+				<li class="menu-item" v-on:click="isShowPage = 1" :class="{active: isShowPage == 1}">Об авторе</li>
+				<li class="menu-item" v-on:click="isShowPage = 2" :class="{active: isShowPage == 2}">Общение</li>
+				<li class="menu-item" v-on:click="isShowPage = 3" :class="{active: isShowPage == 3}">Контакты</li>
+				<li class="menu-item" v-on:click="isShowPage = 4" :class="{active: isShowPage == 4}">Отзывы</li>
+				<li class="menu-item" v-on:click="isShowPage = 5" :class="{active: isShowPage == 5}">Книги</li>
+				<li class="menu-item" v-on:click="isShowPage = 6" :class="{active: isShowPage == 6}">Блог</li>
+			</ul>
+		</div>
+
+		</div><!--/white-block-->
+</div><!--/nav-block-->
+
+
+<!--***********************
+	CONTENT BLOCK
+*************************-->
+<div class="left-fon" :class="{_dark: isShowPage === 0, _light: isShowPage != 0}" >
+
+<!--***********************
+	BOOK PREVIEW
+*************************-->
+	<div id="title" class="block__title _dark"  v-if="isShowPage === 0">
+		<a  href="/test.html">
+			<div class="title__img">
+			<span class="img_text-slice img_text">Открыть фрагмент</span>
+			<img :src="title_img" alt="">
+			</div>
+		</a>
+
+		<div class="title__content">
+			<h2>{{bookTitle}}</h2>
+			<p 	class="content" v-html="bookContent"></p>
+
+			<div class="links">
+				<ul class="links-title">{{linksTitle}}
+					<li v-for="link in links">
+						<p style="margin: 0;">
+						<a :href="link.link" class="link">{{link.name}}</a>
+						</p>
+					</li>
+				</ul>
+			</div>
+
+			<div class="btns">
+				<a href="#" class="sign">Купить книгу</a>
+				<button class="sign">Book-трейлер</button>
+			</div>
+		</div>
+	</div>
+
+<!--***********************
+	BIOGRAFY
+*************************-->
+<div id="about" class="block__content" v-if="isShowPage === 1">
+	<div class="block__header">
+		<h2>{{ aboutHeader }}</h2>
+	</div>
+
+	<div class="content">
+		<img :src="aboutImg" alt="img">
+		<h1 v-html = "aboutTitle"></h1>
+		<p v-for="paragraf in aboutContent">{{paragraf.paragraf}}</p>
+		<span class="sign _box-hang _news">{{aboutSign}}</span>
+	</div>
+</div>
+
+<!--***********************
+	COMMUNICATION
+*************************-->
+	<div id="communication" class="block__content _light" v-if="isShowPage === 2">
+		<div class="block__header">
+			<h2>{{ commHeader }}</h2>
+		</div>
+
+		<div class="content">
+			<h3> {{ commTitle }} </h3>
+			<div class="history__container">
+
+				<div class="communication__history _box-hang _news" v-for="history in commHistory">
+					<h3>{{ history.historyTitle }}</h3>
+					<p v-for="paragraf in history.historyContent">{{ paragraf.paragraf }}</p>
+					<a href="" class="btn sign-comm">{{ history.historyBtn }}</a>
+				</div>
+
+			</div>
+			<p v-for="paragraf in commContent">{{paragraf.paragraf}}</p>
+		</div>
+	</div>
+
+
+<!--***********************
+	NEWS
+*************************-->
+	<div id="news" class="block__content _light" v-if="isShowPage === 6">
+		<div class="block__header">
+			<h2>{{ newsHeader }}</h2>
+		</div>
+
+		<div class="content">
+				<div class="news__header">
+					<h2>{{ newsArticle[0].newsName }}</h2>
+					<div class="date">	{{ newsArticle[0].newsDate}}</div>
+				</div>
+				<p v-for="paragraf in newsArticle[0].newsContent">{{ paragraf.paragraf }}</p>
+			</div>
+	</div>
+
+
+</div><!--/content-block-->
+
+
+<!--***********************
+	ПРОСТО ФОН ФУТЕРА
+*************************-->
+<div class="bot-fon" :class="{_dark: isShowPage === 0, _light: isShowPage != 0}">
+
+</div><!--/content-block-->
+
+
+<!--***********************
+	LINK-SLIDE BLOCK
+*************************-->
+<div class="bot-link" :class="{_dark: isShowPage === 0, _light: isShowPage != 0}">
+	<a href="#">
+		<div class="link-scroll light-border" v-if="isShowPage === 1">Фотографии</div>
+	</a>
+
+	<a href="#">
+		<div class="link-scroll light-border" v-if="isShowPage === 2">Перейти к историям</div>
+	</a>
+
+	<a href="#">
+		<div class="link-scroll light-border" v-if="isShowPage === 6">Другие новости</div>
+	</a>
+
+</div><!--/content-block-->
+
+
+<!--***********************
+	STORIES BLOCK
+*************************-->
+<div class="stories-fon _light">
+<!--***********************
+	BIOGRAFY
+*************************-->
+	<div class="about__photos" v-if="isShowPage === 1">
+		<div class="photos-container" v-for="photo in aboutPhotos">
+			<div class="photo _box-hangX _news">
+				{{photo.img}}
+			</div>
+			<div class="photo-comment">
+				<span class="photo_comment-title">{{ photo.commentTitle}}</span>
+				<p class="sign-comm" v-for="paragraf in photo.comment">{{ paragraf.paragraf }}</p>
+			</div>
+		</div>
+	</div>
+
+
+<!--***********************
+	NEWS
+*************************-->
+	<div class="news-container" v-if="isShowPage === 6">
+		<div class="news__content  _box-hangX _news" v-for="news in newsArticle">
+			<div class="news__header">
+				<h2>{{ news.newsName }}</h2>
+				<div class="date">	{{ news.newsDate}}</div>
+			</div>
+			<img class="_box-hang" src="https://placehold.it/350x250" alt="">
+			<!-- {{ news.img }}-->
+			<p v-for="paragraf in news.newsContent">{{ paragraf.paragraf }}</p>
+		</div>
+
+	</div>
+
+</div><!--/content-block-->
+
+
+
+
+
+
+
+
+
+
+
+</div><!--/.main-->
+	<script src="js/script.js"></script>
+</body>
+</html>

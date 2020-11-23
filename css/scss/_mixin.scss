@@ -1,0 +1,116 @@
+/*FONTs*/
+@font-face {
+	font-family: 'Book Antiqua';
+	src: local('Book Antiqua'),
+	url(../fonts/bookAntiqua.ttf),
+	format('ttf');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/*VARs*/
+$color__text-menu: #FFE8CC;
+$color__back-menu: #202020;
+$color__text-menu-checked: #FF9900;
+
+$color__text-dark: #FFF;
+$color__back-dark: #202020;
+$color__btn-dark-checked: #FEEC4C;
+
+
+$color__text-light: #202020;
+$color__back-light: #FFE8CC;
+
+$color__text-news: #202020;
+$color__back-news: #FFF;
+$color__btn-light-checked: #FF9900;
+
+
+/*MIXINs*/
+@mixin text__Book($size: 16, $weight: 600, $Height: 1, $style: normal){
+	font-family: 'Book Antiqua', serif;
+
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $Height;
+	font-style: $style;
+}
+
+
+@mixin text__Content($size: 16px, $weight: 600, $Height: 1, $style: normal){
+	font-family: 'Montserrat', sans-serif;
+
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $Height;
+	font-style: $style;
+}
+
+
+@mixin theme($theme: dark){
+	transition: color background-color  .5s;
+
+		@if $theme == light {
+		color: $color__text-light;
+		background-color: $color__back-light;
+//		border-color: $color__back-light;
+	}
+	@else if $theme == dark {
+		color: $color__text-dark;
+		background-color: $color__back-dark;
+//		border-color: $color__back-dark;
+	}
+	@else if $theme == menu {
+		color: $color__text-menu;
+		background-color: $color__back-menu;
+//		border-color: $color__back-menu;
+	}
+	@else if $theme == news {
+		color: $color__text-news;
+		background-color: $color__back-news;
+//		border-color: $color__back-news;
+	}
+}
+
+@mixin border($border: outside){
+	display: inline-block;
+
+	@if $border == outside {
+		border-radius: 10px;
+		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	}
+	@else if $border == outsideX{
+		border-radius: 30px;
+		box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+	}
+	@else if $border == outsideS{
+		border-radius: 5px;
+		box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.24);
+	}
+	@else if $border == inside {
+		border-radius: 10px;
+		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4) inset;
+	}
+	@else if $border == insideX {
+		border-radius: 30px;
+		box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4) inset;
+	}
+	@else if $border == btnBorder {
+		border-radius: 10px;
+		border: 1px solid $color__text-dark;
+	}
+}
+
+@mixin row{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+
+@mixin colomn($margin: 0){
+	display: flex;
+	flex-direction: column;
+
+	margin-bottom: $margin;
+}

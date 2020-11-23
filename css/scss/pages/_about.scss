@@ -1,0 +1,26 @@
+.about__photos{
+	@include row;
+	justify-content: space-around;
+
+	flex-wrap: wrap;
+	padding: 0 40px;
+
+}
+
+.photos-container{
+	@include colomn;
+	padding: 20px 50px;
+	width: 33.33333%;
+
+	align-items: center;
+}
+
+.photo-comment{
+	text-align: center;
+	padding: 10px;
+}
+
+.photo{
+	width: 350px;
+	height: 350px;
+}

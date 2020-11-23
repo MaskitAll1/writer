@@ -1,0 +1,116 @@
+._menu{
+	&, a{
+	@include theme(menu);
+	}
+}
+._dark{
+	&, a{
+	@include theme(dark);
+	}
+}
+._light{
+	&, a{
+	@include theme(light);
+	}
+}
+._news{
+	&, a{
+	@include theme(news);
+	}
+}
+
+
+._box-hang{
+	@include border(outsideS);
+	padding: 0 5px;
+}
+
+._box-hangX{
+	@include border(outsideX);
+	padding: 0 5px;
+}
+
+
+
+
+h1{
+	@include text__Book(64px, 700, .7, normal);
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+h2{
+	@include text__Book(36px, 700, 1.25, normal);
+	text-align: center;
+}
+
+h3{
+	@include text__Book(24px, 700, 1.2, normal);
+	text-align: center;
+}
+
+.name__content{
+	@include text__Book(48px, 700, 1, normal);
+}
+
+.photo_comment-title{
+	@include text__Book(24px, 400, 1.25, normal);
+}
+
+
+.links-title{
+	@include text__Book(22px, 700, 1.25, normal);
+}
+
+.menu-item{
+	@include text__Book(22px, 400, 1.1, normal);
+}
+
+.sign{
+	@include text__Book(18px, 700, 1.2, normal);
+}
+
+.sign-comm{
+	@include text__Book(16px, 400, 1.25, normal);
+	text-align: justify;
+
+}
+
+
+
+
+p{
+	@include text__Content(16px, 400, 1.25, normal);
+	margin: 10px 0;
+}
+
+.img_text{
+	@include text__Content(22px, 400, 1.25, normal);
+}
+
+.date{
+	@include text__Content(18px, 400, 2.5, normal);
+}
+
+.link-scroll{
+	@include text__Content(14px, 600, 3.1, normal);
+
+	display: inline-block;
+
+	&::after{
+		content: "";
+		display: inline-block;
+		position: absolute;
+
+		width: 27px;
+		height: 27px;
+		top: 50%;
+		left: 50%;
+
+		transform: rotate(45deg) translateX(-50%);
+		border-right: 2px solid;
+		border-bottom: 2px solid;
+
+	}
+
+}

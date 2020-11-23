@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<link rel="shortcut icon" href="/img/logo.jpg" type="image/png">
+	<title>Наталья Хаимова</title>
+
+	<!-- Подключение стилей	-->
+	<link rel="stylesheet" href="/css/reset.css">
+	<link rel="stylesheet" href="/css/main.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<!-- Подключение VUE.js-->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="main">
+
+	<div class="block__name _menu">
+		<span class="name">{{title}}</span>
+	</div>
+
+
+
+	<div class="block__menu _menu">
+		<div class="menu__title">
+			<span class="title">Меню</span>
+
+		</div>
+		<ul class="menu__items">
+			<li><a href="">Об авторе</a></li>
+			<li>Общение</li>
+			<li>Контакты</li>
+			<li>Отзывы</li>
+			<li>Книги</li>
+			<li>Блог</li>
+		</ul>
+	</div>
+
+
+
+	<div id="title" class="block__title _dark">
+		<div class="title__img">
+			<span class="img_text-slice">Открыть фрагмент</span>
+			<img :src="title_img" alt="">
+		</div>
+		<div class="title__content">
+			<h2>{{bookTitle}}</h2>
+
+			<p 	class="content" v-html = "bookContent"></p>
+
+			<div class="links">
+				<ul>{{linksTitle}}
+					<li v-for="link in links">
+						<a :href="link.link" class="link">{{link.name}}</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="btns">
+				<a href="">Купить книгу</a>
+				<a href="">Book-трейлер</a>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="about" class="block__content _light">
+		<div class="content__header">
+			<h2>{{ aboutHeader }}</h2>
+		</div>
+
+		<div class="content">
+			<img :src="aboutImg" alt="img">
+			<h1 v-html = "aboutTitle"></h1>
+			<p v-for="paragraf in aboutContent">{{paragraf.paragraf}}</p>
+			<span class="sign">{{aboutSign}}</span>
+		</div>
+	</div>
+
+
+	<div id="communication" class="block__content _light">
+		<div class="content__header">
+			<h2>{{ commHeader }}</h2>
+		</div>
+
+		<div class="content">
+			<h3> {{ commTitle }} </h3>
+			<div class="history__container">
+				<div class="communication__history _news" v-for="history in commHistory">
+					<h3>{{ history.historyTitle }}</h3>
+					<p v-for="paragraf in history.historyContent">{{ paragraf.paragraf }}</p>
+					<a href="" class="btn">{{ history.historyBtn }}</a>
+				</div>
+			</div>
+			<p v-for="paragraf in commContent">{{paragraf.paragraf}}</p>
+		</div>
+	</div>
+
+	<div id="news" class="block__content _light">
+		<div class="content__header">
+			<h2>{{ newsHeader }}</h2>
+		</div>
+
+		<div class="content">
+			<div class="news__header">
+				<h2>{{ newsArticle[0].newsName }}</h2>
+				<div class="date">	{{ newsArticle[0].newsDate.getDate() }} /						{{ newsArticle[0].newsDate.getMonth() + 1}} / 					  {{ newsArticle[0].newsDate.getFullYear() }}</div>
+			</div>
+			<p v-for="paragraf in newsArticle[0].newsContent">{{ paragraf.paragraf }}</p>
+		</div>
+	</div>
+
+
+</div>
+
+	<script src="js/script.js"></script>
+</body>
+</html>
+
